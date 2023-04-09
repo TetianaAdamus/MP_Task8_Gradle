@@ -4,8 +4,8 @@ Feature: Desktop Checkout for Guest User
   I want to be able proceed to checkout
   So that I can specify my delivery and payment details and place the order
 
+  @Regression
   Scenario: Proceed to checkout, final review and place order as guest user
-
     When I open the "Initial home page"
     Given I am an anonymous customer with clear cookies
     And I close Annoucement popup
@@ -22,10 +22,10 @@ Feature: Desktop Checkout for Guest User
       | Language     | English (21)   |
       | Format       | Paperback (22) |
     Then Search results contain only the following products
-      | Thinking in Java                                                      |
-      | Think Java                                                            |
-      | Thinking Recursively - A 20th Anniversary Edition with Java (WSE)     |
-      | Think Data Structures                                                 |
+      | Thinking in Java                                                  |
+      | Think Java                                                        |
+      | Thinking Recursively - A 20th Anniversary Edition with Java (WSE) |
+      | Think Data Structures                                             |
     When I click 'Add to basket' button for product with name "Thinking in Java"
     And I select 'Basket/Checkout' in basket pop-up
     Then I am redirected to a "Basket page"
@@ -45,12 +45,12 @@ Feature: Desktop Checkout for Guest User
     And the following validation error messages are displayed on 'Payment' form:
       | Please enter your card number, Please enter your card's expiration date, Please enter your CVV |
     And Checkout order summary is as following:
-      | Sub-total | Delivery | VAT     |  Total   |
-      | 84,92 €   | FREE     | 0,00 €  | 84,92 €  |
+      | Sub-total | Delivery | VAT    | Total   |
+      | 84,92 €   | FREE     | 0,00 € | 84,92 € |
     And I checkout as a new customer with email "test@user.com"
     When I fill delivery address information manually:
-      | Full name | Delivery country | Address line 1   | Address line 2   | Town/City | County/State | Postcode |
-      | John Adams| Croatia          | Random address 1 | Random address 2 | Kyiv      | Random State | 12345    |
+      | Full name  | Delivery country | Address line 1   | Address line 2   | Town/City | County/State | Postcode |
+      | John Adams | Croatia          | Random address 1 | Random address 2 | Kyiv      | Random State | 12345    |
     Then there is no validation error messages displayed on 'Delivery Address' form
     And I enter my card details
       | cardNumber   | 4111111111111111 |
@@ -58,13 +58,13 @@ Feature: Desktop Checkout for Guest User
       | Expiry Year  | 2022             |
       | Cvv          | 123              |
 
-
+  @Smoke
   Scenario: Adding the product to the cart
     Given I open Thinking in Java product
     And I close Annoucement popup
     Then I am on the "Thinking in Java" product page
 
-
+  @Smoke
   Scenario: Bestseller cathegory opening
     Given I open the "Initial home page"
     And I close Annoucement popup
